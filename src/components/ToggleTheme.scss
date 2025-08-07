@@ -1,0 +1,15 @@
+.yny-image {
+  width: 25px;
+  height: 25px;
+}
+.toggle-theme {
+  background-color: transparent;
+  border: none;
+}
+.toggle-theme button {
+  background-color: transparent;
+  border: none;
+}
+.clicked {
+  transform: rotate(180deg);
+}
