@@ -14,10 +14,7 @@ export default tseslint.config([
       tseslint.configs.recommended,
       reactHooks.configs['recommended-latest'],
       reactRefresh.configs.vite,
-    ],
-    languageOptions: {
-      ecmaVersion: 2020,
-      globals: globals.browser,
+    ], languageOptions: { ecmaVersion: 2020, globals: globals.browser,
     },
   },
 ])

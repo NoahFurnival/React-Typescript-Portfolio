@@ -1,13 +1,26 @@
-:root{
-  --bg: white;
-  --text: black;
-}
-[data-theme="dark"] {
-  --bg: #0d1117;
-  --text: #c9d1d9;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
+
+$primary: #256bdb;
+$bg: #0d1117;
+$text-main: #c9d1d9;
+
+$secondary: #f59e0b;
+$muted: #6b7280;
+$font-main: "Poppins", sans-serif;
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: $font-main;
+  scroll-behavior: smooth;
 }
 body {
-  background-color: var(--bg);
-  color: var(--text);
-  transition: background 0.3s ease, color 0.3s ease;
+  background: $bg;
+  color: $text-main;
+  transition:
+    background 0.3s ease,
+    color 0.3s ease;
+  overflow-x: hidden;
+  @media (max-width: 900px) {
+  }
 }
