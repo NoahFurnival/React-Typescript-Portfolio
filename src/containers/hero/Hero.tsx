@@ -1,10 +1,9 @@
-import { useEffect, useState } from "react";
-import { FiZap, FiCpu } from "react-icons/fi";
-import { FaRocket, FaGithub, FaLinkedin, FaEnvelope } from "react-icons/fa";
-import { motion } from "framer-motion";
-import EarthScene from "@/components/canvas/EarthScene";
+import cropped from "@/assets/cropped.JPG";
+import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
+import { FaDownload } from "react-icons/fa";
+import { motion, AnimatePresence } from "framer-motion";
 import "./Hero.scss";
-import { SelectedPage } from "@/shared/types";
+import TypeWriter from "@/components/TypeWriter";
 const Waving = () => {
   return (
     <img
@@ -14,126 +13,100 @@ const Waving = () => {
     />
   );
 };
-const TypeText = ({ texts }: { texts: string[] }) => {
-  const [displayText, setDisplayText] = useState("");
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const [isTyping, setIsTyping] = useState(true);
-
-  useEffect(() => {
-    const typingInterval = setInterval(() => {
-      if (isTyping) {
-        const currentText = texts[currentIndex];
-        if (displayText.length < currentText.length) {
-          setDisplayText((prevText: string) =>
-            currentText.slice(0, prevText.length + 1),
-          );
-        } else {
-          setIsTyping(false);
-          clearInterval(typingInterval);
-          setTimeout(() => {
-            setIsTyping(true);
-            setDisplayText("");
-            setCurrentIndex(
-              (prevIndex: number) => (prevIndex + 1) % texts.length,
-            );
-          }, 2000);
-        }
-      }
-    }, 100);
-
-    return () => {
-      clearInterval(typingInterval);
-    };
-  }, [currentIndex, isTyping, texts, displayText]);
-  return (
-    <span className="hero__typed">
-      {displayText.split("").map((char, index) => (
-        <motion.span
-          key={index}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.1 }}
-        >
-          {char}
-        </motion.span>
-      ))}
-      {isTyping && (
-        <motion.span
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{
-            duration: 0.5,
-            repeat: Infinity,
-            repeatType: "reverse",
-          }}
-        >
-          |
-        </motion.span>
-      )}
-    </span>
-  );
-};
 type props = {
-  setSelectedPage: (value: SelectedPage) => void;
+  isTop: boolean;
 };
-const Hero = ({ setSelectedPage }: props) => {
+const Hero = ({ isTop }: props) => {
   const typedItems = [
     "Front-end Developer",
     "Back-end Developer",
     "Software Engineer",
-    "Computer Technician",
+    "IT Technician",
   ];
   return (
-    <section id="hero">
+    <section id="home">
       <motion.div
-        onViewportEnter={() => setSelectedPage(SelectedPage.Hero)}
         className="hero"
       >
-        <div className="hero__bar">
-          <div className="hero__bar-circle"></div>
-          <div className="hero__bar-line"></div>
-        </div>
-        <div className="hero__text">
+        <div className="hero__header">
           <h1>
-            Hi, I'm <span className="hero__accent">Noah </span>
-            <Waving />
+            Hi, I'm <span>Noah</span> <Waving />
           </h1>
-          <p className="hero__text-secondary">
-            I'm a <TypeText texts={typedItems} />
+          <h2>
+            <TypeWriter texts={typedItems} />
+          </h2>
+          <p>
+            Crafting seamless digital experiences from front-end to back-end, I
+            merge design, engineering, and problem solving to build software
+            that’s beautiful and high-performing. From coding and
+            troubleshooting to architecting solutions, I turn ideas into
+            reality.
           </p>
-          <p className="hero__text-small">
-            <FiZap /> Passionate about crafting clean, efficient code and
-            building seamless user experiences.
-          </p>
-          <br />
-          <p className="hero__text-small">
-            <FiCpu /> Dedicated to continuous learning and solving complex
-            problems with creative solutions.
-          </p>
-          <br />
-          <p className="hero__text-small">
-            <FaRocket /> Enthusiastic collaborator who thrives in team
-            environments and agile workflows.
-          </p>
-          <br />
-          <div className="hero__socials">
-            <a href="https://github.com/NoahFurnival" target="_blank">
-              <FaGithub />
-            </a>
+          <div className="hero__icons">
             <a
               href="https://www.linkedin.com/in/noah-furnival-051710247/"
               target="_blank"
             >
-              <FaLinkedin />
+              <FiLinkedin />
             </a>
-
-            <a href="mailto:noahfurnival@gmail.com" target="_blank">
-              <FaEnvelope />
+            <a href="https://github.com/NoahFurnival" target="_blank">
+              <FiGithub />
+            </a>
+            <a href="mailto:noahfurnival@gmail.com">
+              <FiMail />
             </a>
           </div>
+          <div className="hero__button">
+            <motion.a
+              href="#contact"
+              className="hero__contact"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.3, type: "spring" }}
+            >
+              Contact Me <span> {">"} </span>
+            </motion.a>
+            <motion.a
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              transition={{ duration: 0.3, type: "spring"}}
+              className="hero__resume"
+              href="@/assets/resume.pdf"
+              download
+            >
+              Download Resume <FaDownload size={24} />
+            </motion.a>
+          </div>
         </div>
+        <div className="hero__image">
+          <img src={cropped} alt="test"></img>
+        </div>
+        <AnimatePresence>
+          {isTop && (
+            <motion.div
+              className="hero__scroll"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1, duration: 0.6 }}
+              exit={{
+                opacity: 0,
+                transition: { duration: 0.1, ease: "easeOut" },
+              }}
+            >
+              <motion.div
+                className="hero__scroll-inner"
+                animate={{ y: ["0%", "150%", "0%"] }}
+                transition={{
+                  delay: 1.25,
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut",
+                }}
+              ></motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </motion.div>
-      <EarthScene />
     </section>
   );
 };

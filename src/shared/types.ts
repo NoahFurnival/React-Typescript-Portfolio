@@ -2,8 +2,6 @@ export enum SelectedPage {
 		Hero = "hero",
 		Skills = "skills",
 		Projects = "projects",
-		Experience = "experience",
-		Education = "education",
-		ContactMe = "contactme",
+		Background = "background",
+		Contact = "contact",
 };
-export type Theme = "light" | "dark";

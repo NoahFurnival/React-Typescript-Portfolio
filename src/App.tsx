@@ -1,8 +1,7 @@
 import "@/App.scss";
 import Projects from "./containers/projects/Projects";
 import Skills from "@/containers/skills/Skills";
-import School from "@/containers/school/School";
-import Experience from "@/containers/experience/Experience";
+import Background from "@/containers/background/Background";
 import Contact from "@/containers/contact/Contact";
 import Navbar from "@/containers/navbar/Navbar";
 import Hero from "@/containers/hero/Hero";
@@ -27,16 +26,16 @@ function App() {
   }, []);
   return (
     <div>
-      <Navbar
-        selectedPage={selectedPage}
-        setSelectedPage={setSelectedPage}
-        isTop={isTop}
-      />
-      <Hero setSelectedPage={setSelectedPage}  />
-      <Skills setSelectedPage={setSelectedPage}/>
-      <School  />
-      <Experience />
-      <Projects setSelectedPage={setSelectedPage}/>
+      <div className="hero-pattern">
+        <Navbar
+          selectedPage={selectedPage}
+          setSelectedPage={setSelectedPage}
+          isTop={isTop}
+        />
+        <Hero isTop={isTop} />
+      </div>
+      <Skills setSelectedPage={setSelectedPage} />
+      <Background setSelectedPage={setSelectedPage} />
       <Contact />
     </div>
   );

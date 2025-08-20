@@ -1,98 +1,144 @@
 import { SelectedPage } from "@/shared/types";
 import "./Skills.scss";
-import { motion } from "framer-motion";
+import { headerVariant, subHeaderVariant } from "@/shared/headerAnimations";
+import { useEffect, useRef } from "react";
+import { motion, useAnimation, useInView } from "framer-motion";
+import SkillCard from "@/components/SkillCard";
+import { tools, languages, databases, frontEnd } from "@/shared/skillConstants";
+
+
 type props = {
   setSelectedPage: (value: SelectedPage) => void;
 };
-
-const technologies = [
-  {
-    name: "Python",
-    sub: "High-Level, Versatile",
-    description:
-      "Python is a powerful, easy-to-learn programming language used for web development, data analysis, automation, AI, and scientific computing. Its readability and extensive libraries make it highly versatile.",
-  },
-  {
-    name: "CSS",
-    sub: "Style Sheet Language",
-    description:
-      "CSS (Cascading Style Sheets) is used to style and layout web pages, controlling colors, fonts, spacing, and responsive designs to create visually appealing websites.",
-  },
-  {
-    name: "HTML",
-    sub: "Markup Language",
-    description:
-      "HTML (HyperText Markup Language) structures content on the web, defining elements like headings, paragraphs, links, images, and forms.",
-  },
-  {
-    name: "React",
-    sub: "JavaScript Library",
-    description:
-      "React is a popular JavaScript library for building dynamic, component-based user interfaces. It allows for efficient rendering and interactive web applications.",
-  },
-  {
-    name: "TypeScript",
-    sub: "Typed JavaScript Superset",
-    description:
-      "TypeScript is a superset of JavaScript that adds static typing, enabling developers to catch errors early and build large, scalable applications with confidence.",
-  },
-  {
-    name: "JavaScript",
-    sub: "Scripting Language",
-    description:
-      "JavaScript is the core language of the web, used for creating interactive and dynamic web pages, handling events, and building both front-end and back-end applications.",
-  },
-  {
-    name: "Bash",
-    sub: "Command-Line Scripting",
-    description:
-      "Bash is a Unix shell and scripting language used for automating tasks, managing system processes, and writing shell scripts on Linux and macOS systems.",
-  },
-  {
-    name: "SQL",
-    sub: "Database Query Language",
-    description:
-      "SQL (Structured Query Language) is used to manage and manipulate relational databases, allowing for efficient data querying, updating, and organization.",
-  },
-  {
-    name: "Android Studio",
-    sub: "Mobile App Development IDE",
-    description:
-      "Android Studio is the official IDE for developing Android apps, providing tools, emulators, and code assistance for building mobile applications in Java and Kotlin.",
-  },
-  {
-    name: "Lua",
-    sub: "Lightweight Scripting Language",
-    description:
-      "Lua is a lightweight, high-performance scripting language commonly used for game development, embedded systems, and scripting within applications.",
-  },
-  {
-    name: "Tailwind",
-    sub: "Utility-First CSS Framework",
-    description:
-      "Tailwind CSS is a utility-first CSS framework that allows developers to rapidly build custom designs by composing small, reusable classes directly in HTML or JSX.",
-  },
-  {
-    name: "Sass",
-    sub: "CSS Preprocessor",
-    description:
-      "Sass (Syntactically Awesome Stylesheets) is a CSS preprocessor that adds variables, nesting, and reusable mixins, making CSS more maintainable and efficient for large projects.",
-  },
-  {
-    name: "PHP",
-    sub: "Server-Side Scripting",
-    description:
-      "PHP is a widely-used server-side scripting language designed for web development. It powers dynamic websites and web applications, enabling interaction with databases and server-side logic.",
-  },
-];
 const Skills = ({ setSelectedPage }: props) => {
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+  const isInViewMulti = useInView(sectionRef, { amount: 0.5 });
+  const controls = useAnimation();
+
+  useEffect(() => {
+    if (isInView) {
+      controls.start("visible");
+    }
+  }, [isInView, controls]);
+  useEffect(() => {
+    if (isInViewMulti) {
+      setSelectedPage(SelectedPage.Skills);
+    }
+  }, [setSelectedPage, isInViewMulti]);
   return (
-    <section id="skills">
-      <motion.div
-        className="skills"
-        onViewportEnter={() => setSelectedPage(SelectedPage.Skills)}
-      >
-        <div className="skills__title"></div>
+    <section id="skills" ref={sectionRef}>
+      <motion.div className="skills">
+        <div className="skills__title">
+          <motion.h4
+            variants={subHeaderVariant}
+            initial="hidden"
+            animate={controls}
+          >
+            What I've Learned
+          </motion.h4>
+          <motion.h3
+            variants={headerVariant}
+            initial="hidden"
+            animate={controls}
+          >
+            Skills
+          </motion.h3>
+        </div>
+        <div className="skills__main">
+          <div className="skills__main-languages">
+            <h5> Languages </h5>
+            <motion.ul
+              className="skills__main-languages-inner"
+              variants={{
+                hidden: {},
+                show: { transition: { staggerChildren: 0.1 } },
+              }}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {languages.map((item) => {
+                return (
+                  <SkillCard
+                    key={item.label}
+                    label={item.label}
+                    icon={item.icon}
+                  />
+                );
+              })}
+            </motion.ul>
+          </div>
+          <div className="skills__main-tools">
+            <h5> Tools </h5>
+            <motion.ul
+              className="skills__main-tools-inner"
+              variants={{
+                hidden: {},
+                show: { transition: { staggerChildren: 0.1 } },
+              }}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {tools.map((item) => {
+                return (
+                  <SkillCard
+                    key={item.label}
+                    label={item.label}
+                    icon={item.icon}
+                  />
+                );
+              })}
+            </motion.ul>
+          </div>
+          <div className="skills__main-front">
+            <h5> Front-end Development </h5>
+            <motion.ul
+              className="skills__main-front-inner"
+              variants={{
+                hidden: {},
+                show: { transition: { staggerChildren: 0.1 } },
+              }}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {frontEnd.map((item) => {
+                return (
+                  <SkillCard
+                    key={item.label}
+                    label={item.label}
+                    icon={item.icon}
+                  />
+                );
+              })}
+            </motion.ul>
+          </div>
+          <div className="skills__main-database">
+            <h5>Databases</h5>
+            <motion.ul
+              className="skills__main-database-inner"
+              variants={{
+                hidden: {},
+                show: { transition: { staggerChildren: 0.1 } },
+              }}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true, amount: 0.2 }}
+            >
+              {databases.map((item) => {
+                return (
+                  <SkillCard
+                    key={item.label}
+                    label={item.label}
+                    icon={item.icon}
+                  />
+                );
+              })}
+            </motion.ul>
+          </div>
+        </div>
       </motion.div>
     </section>
   );

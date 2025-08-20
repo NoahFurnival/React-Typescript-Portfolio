@@ -1,26 +1,69 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap");
 
-$primary: #256bdb;
-$bg: #0d1117;
-$text-main: #c9d1d9;
+$primary: #8b5cf6;
+$bg: #050815;
 
-$secondary: #f59e0b;
+$text-main: #c9d1d9;
+$text-sub: #aaa6c3;
+$button-color: #6d28d9;
+$active: #3b2e57;
+$xs: 480px;
+$small: 640px;
+$medium: 768px;
+$large: 1024px;
+$xl: 1280px;
+
+@mixin hero-header() {
+  font-size: 80px;
+  font-weight: 900;
+  @media (max-width: $xl) {
+    font-size: 60px;
+  }
+  @media (max-width: $large) {
+    font-size: 45px;
+  }
+  @media (max-width: $small) {
+    font-size: 35px;
+  }
+}
+@mixin sub($size: 30px) {
+  font-size: $size;
+  font-weight: 300;
+  color: $text-sub;
+  text-transform: uppercase;
+  @media (max-width: $xl) {
+    font-size: $size * 0.86;
+  }
+  @media (max-width: $large) {
+    font-size: $size * 0.67;
+  }
+  @media (max-width: $small) {
+    font-size: $size * 0.5;
+  }
+}
+@mixin section-header() {
+  font-size: 60px;
+  font-weight: 900;
+  @media (max-width: $xl) {
+    font-size: 50px;
+  }
+  @media (max-width: $large) {
+    font-size: 40px;
+  }
+  @media (max-width: $xl) {
+    font-size: 30px;
+  }
+}
 $muted: #6b7280;
 $font-main: "Poppins", sans-serif;
-* {
+*, *::before, *::after{
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: $font-main;
-  scroll-behavior: smooth;
+  color-scheme: dark;
 }
 body {
   background: $bg;
   color: $text-main;
-  transition:
-    background 0.3s ease,
-    color 0.3s ease;
-  overflow-x: hidden;
-  @media (max-width: 900px) {
-  }
 }

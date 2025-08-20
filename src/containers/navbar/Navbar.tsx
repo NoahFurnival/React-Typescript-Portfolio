@@ -1,8 +1,9 @@
 import { useState } from "react";
+import logo from "@/assets/logo.png";
 import "@/containers/navbar/Navbar.scss";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
-import Link from "@/components/links/Link";
-import ImageLink from "@/components/links/ImageLink";
+import AnchorLink from "react-anchor-link-smooth-scroll";
+import Link from "@/components/Link";
 import { SelectedPage } from "@/shared/types";
 import useMediaQuery from "@/hooks/useMediaQuery";
 
@@ -15,6 +16,10 @@ type Props = {
 const Navbar = ({ selectedPage, isTop, setSelectedPage }: Props) => {
   const [menuToggled, setMenuToggled] = useState<boolean>(false);
   const isAboveMediumScreens = useMediaQuery("(min-width: 900px)");
+  const mobileOnClick = (curPage: SelectedPage) => {
+    setSelectedPage(curPage);
+    setMenuToggled(false);
+  };
 
   return (
     <nav>
@@ -22,14 +27,19 @@ const Navbar = ({ selectedPage, isTop, setSelectedPage }: Props) => {
         <div className="navbar__wrapper">
           <div className="navbar__inner">
             <div className="navbar__image">
-              <ImageLink
-                page="Hero"
-                selectedPage={selectedPage}
-                setSelectedPage={setSelectedPage}
-              />
+              <AnchorLink href="#hero">
+                <img src={logo} alt="logo"></img>
+              </AnchorLink>
             </div>
             {isAboveMediumScreens ? (
               <div className="navbar__desktop">
+                <div className="navbar__item">
+                  <Link
+                    page="Home"
+                    selectedPage={selectedPage}
+                    setSelectedPage={setSelectedPage}
+                  />
+                </div>
                 <div className="navbar__item">
                   <Link
                     page="Skills"
@@ -39,21 +49,14 @@ const Navbar = ({ selectedPage, isTop, setSelectedPage }: Props) => {
                 </div>
                 <div className="navbar__item">
                   <Link
+                    page="Background"
+                    selectedPage={selectedPage}
+                    setSelectedPage={setSelectedPage}
+                  />
+                </div>
+                <div className="navbar__item">
+                  <Link
                     page="Projects"
-                    selectedPage={selectedPage}
-                    setSelectedPage={setSelectedPage}
-                  />
-                </div>
-                <div className="navbar__item">
-                  <Link
-                    page="Experience"
-                    selectedPage={selectedPage}
-                    setSelectedPage={setSelectedPage}
-                  />
-                </div>
-                <div className="navbar__item">
-                  <Link
-                    page="Education"
                     selectedPage={selectedPage}
                     setSelectedPage={setSelectedPage}
                   />
@@ -81,37 +84,37 @@ const Navbar = ({ selectedPage, isTop, setSelectedPage }: Props) => {
                     <div className="navbar__mobile-items">
                       <div className="navbar__item">
                         <Link
+                          page="Home"
+                          selectedPage={selectedPage}
+                          setSelectedPage={() => mobileOnClick(selectedPage)}
+                        />
+                      </div>
+                      <div className="navbar__item">
+                        <Link
                           page="Skills"
                           selectedPage={selectedPage}
-                          setSelectedPage={setSelectedPage}
+                          setSelectedPage={() => mobileOnClick(selectedPage)}
+                        />
+                      </div>
+                      <div className="navbar__item">
+                        <Link
+                          page="Background"
+                          selectedPage={selectedPage}
+                          setSelectedPage={() => mobileOnClick(selectedPage)}
                         />
                       </div>
                       <div className="navbar__item">
                         <Link
                           page="Projects"
                           selectedPage={selectedPage}
-                          setSelectedPage={setSelectedPage}
+                          setSelectedPage={() => mobileOnClick(selectedPage)}
                         />
                       </div>
                       <div className="navbar__item">
                         <Link
-                          page="Experience"
+                          page="Contact"
                           selectedPage={selectedPage}
-                          setSelectedPage={setSelectedPage}
-                        />
-                      </div>
-                      <div className="navbar__item">
-                        <Link
-                          page="Education"
-                          selectedPage={selectedPage}
-                          setSelectedPage={setSelectedPage}
-                        />
-                      </div>
-                      <div className="navbar__item">
-                        <Link
-                          page="Contact Me"
-                          selectedPage={selectedPage}
-                          setSelectedPage={setSelectedPage}
+                          setSelectedPage={() => mobileOnClick(selectedPage)}
                         />
                       </div>
                     </div>
