@@ -9,5 +9,9 @@
   text-align: center;
 }
 .selected-page {
-  color: $primary;
+  & {
+    @media (min-width: 900px) {
+      color: $primary;
+    }
+  }
 }

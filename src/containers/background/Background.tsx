@@ -1,4 +1,5 @@
 import { motion, type Variants, useInView } from "framer-motion";
+import useMediaQuery from "@/hooks/useMediaQuery";
 import { useRef, useEffect } from "react";
 import "./Background.scss";
 import { headerVariant, subHeaderVariant } from "@/shared/headerAnimations";
@@ -17,9 +18,9 @@ type props = {
   setSelectedPage: (value: SelectedPage) => void;
 };
 const Background = ({ setSelectedPage }: props) => {
+  const isAboveMediumScreens = useMediaQuery("(max-width: 768px");
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
-  const timelineAnimation = useInView(sectionRef, { once: true, amount: 0.3 });
   const isInViewMulti = useInView(sectionRef, { amount: 0.5 });
   useEffect(() => {
     if (isInViewMulti) {
@@ -30,12 +31,11 @@ const Background = ({ setSelectedPage }: props) => {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.3,
+        staggerChildren: 0.2,
         staggerDirection: -1,
       },
     },
   };
-
   return (
     <section id="background" ref={sectionRef}>
       <motion.div className="background">
@@ -56,29 +56,42 @@ const Background = ({ setSelectedPage }: props) => {
           </motion.h3>
         </div>
         <div className="background__main">
+          {isAboveMediumScreens && <div className="swiper-pagination-top" />}
           <Swiper
             modules={[Pagination]}
             slidesPerView={1}
             pagination={{
-              el: ".swiper-pagination-bottom",
+              el: ".swiper-pagination-top",
               clickable: true,
+              renderBullet: (index, className) => {
+                const labels = ["Education", "Experience"];
+                return `<button class="${className} background__tab">${labels[index]}</button>`;
+              },
             }}
             breakpoints={{
               768: {
                 slidesPerView: 2,
                 allowTouchMove: false,
                 spaceBetween: 1,
+                pagination: {
+                  el: ".swiper-pagination-top", // target the container above
+                  clickable: true,
+                  renderBullet: (index, className) => {
+                    const labels = ["Education", "Experience"];
+                    return `<button class="${className} background__tab">${labels[index]}</button>`;
+                  },
+                },
               },
             }}
           >
             <SwiperSlide>
               <motion.div className="background__education">
-                <h5> Education </h5>
+                {!isAboveMediumScreens && <h5> Education </h5>}
                 <motion.div
                   className="background__education-inner"
                   initial="hidden"
                   variants={variants}
-                  animate={timelineAnimation ? "visible" : "hidden"}
+                  animate={isInView ? "visible" : "hidden"}
                 >
                   {education.map((item) => {
                     return (
@@ -97,12 +110,12 @@ const Background = ({ setSelectedPage }: props) => {
             </SwiperSlide>
             <SwiperSlide>
               <motion.div className="background__experience">
-                <h5> Experience </h5>
+                {!isAboveMediumScreens && <h5> Experience </h5>}
                 <motion.div
                   className="background__experience-inner"
                   initial="hidden"
                   variants={variants}
-                  animate={timelineAnimation ? "visible" : "hidden"}
+                  animate={isInView ? "visible" : "hidden"}
                 >
                   {experience.map((item) => {
                     return (
