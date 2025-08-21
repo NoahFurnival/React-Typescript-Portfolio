@@ -19,7 +19,9 @@ const EducationCard = ({
       scaleY: 1,
       opacity: 1,
       transition: {
-        ease: "easeOut",
+        type: "spring",
+        stiffness: 100,
+        damping: 16,
       },
     },
   };
@@ -46,7 +48,7 @@ const EducationCard = ({
         stiffness: 100,
         damping: 8,
       },
-    }
+    },
   };
   const parentVariants: Variants = {
     hidden: {},

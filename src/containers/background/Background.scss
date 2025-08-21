@@ -1,36 +1,4 @@
 @import "../../App.scss";
-.swiper-pagination-top {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-  margin-bottom: 1rem;
-}
-.swiper-pagination-bullet {
-  background: none !important;
-  width: auto !important;
-  height: auto !important;
-  border-radius: 0 !important;
-  opacity: 1 !important;
-  margin: 0 !important;
-}
-.swiper-pagination-bullet-active.background__tab {
-  color: $primary;
-}
-.background__tab {
-  all: unset;
-  padding: 0.5rem 1.25rem;
-  font-size: 0.9rem;
-  border-radius: 999px;
-  border: 1px solid $primary;
-  background: transparent;
-  color: white;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  &:hover {
-    color: $primary;
-  }
-}
 .education {
   padding: 10px;
   margin-right: 0.5rem;
@@ -143,7 +111,7 @@
 }
 .dot {
   position: absolute;
-  left: -3.34rem;
+  left: -2.86rem;
   top: -0.8rem;
   width: 14px;
   height: 14px;
@@ -186,6 +154,38 @@
   &__main {
     width: 80%;
     margin: 0 0 2rem 0;
+    .swiper-pagination-top {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+    .swiper-pagination-bullet {
+      background: none !important;
+      width: auto !important;
+      height: auto !important;
+      border-radius: 0 !important;
+      opacity: 1 !important;
+      margin: 0 !important;
+    }
+    .swiper-pagination-bullet-active.background__tab {
+      color: $primary;
+    }
+    .background__tab {
+      all: unset;
+      padding: 0.5rem 1.25rem;
+      font-size: 0.9rem;
+      border-radius: 999px;
+      border: 1px solid $primary;
+      background: transparent;
+      color: white;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      &:hover {
+        color: $primary;
+      }
+    }
   }
   &__experience,
   &__education {
@@ -217,7 +217,7 @@
 }
 .line {
   position: absolute;
-  left: -3rem;
+  left: -2.5rem;
   top: 0;
   height: 102%;
   bottom: 0;

@@ -13,8 +13,9 @@ const ExperienceCard = ({ start, end, title, duties, company }: props) => {
       scaleY: 1,
       opacity: 1,
       transition: {
-        duration: 0.2,
-        ease: "easeOut",
+        type: "spring",
+        stiffness: 100,
+        damping: 16,
       },
     },
   };
