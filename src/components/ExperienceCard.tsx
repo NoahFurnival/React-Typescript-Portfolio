@@ -13,10 +13,8 @@ const ExperienceCard = ({ start, end, title, duties, company }: props) => {
       scaleY: 1,
       opacity: 1,
       transition: {
-        duration: 0.1,
-        type: "spring",
-        damping: 20,
-        stiffness: 100,
+        duration: 0.2,
+        ease: "easeOut",
       },
     },
   };
@@ -30,7 +28,6 @@ const ExperienceCard = ({ start, end, title, duties, company }: props) => {
         type: "spring",
         stiffness: 200,
         damping: 12,
-        duration: 0.1,
       },
     },
   };
@@ -43,7 +40,6 @@ const ExperienceCard = ({ start, end, title, duties, company }: props) => {
         type: "spring",
         stiffness: 100,
         damping: 8,
-        duration: 0.1,
       },
     },
   };
@@ -51,7 +47,7 @@ const ExperienceCard = ({ start, end, title, duties, company }: props) => {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.05,
       },
     },
   };
@@ -65,10 +61,7 @@ const ExperienceCard = ({ start, end, title, duties, company }: props) => {
           style={{ originY: 1 }}
         ></motion.div>
         <motion.div className="dot" variants={dotVariants}></motion.div>
-        <motion.div
-          className="experience"
-          variants={cardVariants}
-        >
+        <motion.div className="experience" variants={cardVariants}>
           <p className="experience__date">
             {start} - {end}
           </p>

@@ -31,7 +31,7 @@ const Background = ({ setSelectedPage }: props) => {
     hidden: {},
     visible: {
       transition: {
-        staggerChildren: 0.2,
+        staggerChildren: 0.3,
         staggerDirection: -1,
       },
     },

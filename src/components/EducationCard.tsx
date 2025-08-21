@@ -19,10 +19,7 @@ const EducationCard = ({
       scaleY: 1,
       opacity: 1,
       transition: {
-        duration: 0.1,
-        type: "spring",
-        damping: 20,
-        stiffness: 100,
+        ease: "easeOut",
       },
     },
   };
@@ -36,7 +33,6 @@ const EducationCard = ({
         type: "spring",
         stiffness: 200,
         damping: 12,
-        duration: 0.1,
       },
     },
   };
@@ -49,9 +45,8 @@ const EducationCard = ({
         type: "spring",
         stiffness: 100,
         damping: 8,
-        duration: 0.1,
       },
-    },
+    }
   };
   const parentVariants: Variants = {
     hidden: {},
