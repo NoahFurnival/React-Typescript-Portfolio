@@ -132,22 +132,12 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 0;
-    padding: 0;
     margin-bottom: 1rem;
     flex-direction: column;
-    & * {
-      padding: 0;
-      margin: 0;
-    }
     & h4 {
-      padding: 0;
-      margin: 0;
       @include sub;
     }
     & h3 {
-      padding: 0;
-      margin: 0;
       @include hero-header;
     }
   }
@@ -174,10 +164,9 @@
     }
     .background__tab {
       all: unset;
-      padding: 0.5rem 1.25rem;
+      padding: 0.5rem 0.5rem;
       font-size: 0.9rem;
       border-radius: 999px;
-      border: 1px solid $primary;
       background: transparent;
       color: white;
       cursor: pointer;

@@ -25,9 +25,7 @@ const Hero = ({ isTop }: props) => {
   ];
   return (
     <section id="home">
-      <motion.div
-        className="hero"
-      >
+      <motion.div className="hero">
         <div className="hero__header">
           <h1>
             Hi, I'm <span>Noah</span> <Waving />
@@ -69,7 +67,7 @@ const Hero = ({ isTop }: props) => {
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              transition={{ duration: 0.3, type: "spring"}}
+              transition={{ duration: 0.3, type: "spring" }}
               className="hero__resume"
               href="@/assets/resume.pdf"
               download

@@ -35,7 +35,7 @@ const Projects = ({ setSelectedPage }: props) => {
   return (
     <section id="projects" ref={sectionRef}>
       <div className="projects">
-        <div className="background__title">
+        <div className="projects__title">
           <motion.h4
             variants={subHeaderVariant}
             initial="hidden"
@@ -73,7 +73,7 @@ const Projects = ({ setSelectedPage }: props) => {
             coverflowEffect={{
               rotate: 50,
               stretch: 0,
-              depth: 80,
+              depth: 70,
               modifier: 1,
               slideShadows: false,
             }}
