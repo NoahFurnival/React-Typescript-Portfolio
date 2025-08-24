@@ -7,16 +7,13 @@
     "skipLibCheck": true,
     "strict": true,
 
-    /* React */
     "jsx": "react-jsx",
 
-    /* Path aliases (optional) */
     "baseUrl": ".",
     "paths": {
       "@/*": ["src/*"]
     },
 
-    /* Nice-to-haves */
     "noEmit": true,
     "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true

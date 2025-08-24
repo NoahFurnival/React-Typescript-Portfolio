@@ -43,7 +43,7 @@ $card-bg: rgba($active, 0.1);
 
     .swiper-slide {
       width: 280px;
-      height: 75vh;
+      max-height: 75vh;
       padding-top: 3rem;
       padding-bottom: 5rem;
       transition: transform 0.3s ease-in-out;
@@ -78,7 +78,7 @@ $card-bg: rgba($active, 0.1);
   border: 1px solid rgba(108, 232, 255, 0.28);
   box-shadow: 0 8px 24px $glow;
   &__pic {
-    margin-bottom: 0.5rem;
+    margin: 1rem 0;
     padding: 1rem;
     img {
       aspect-ratio: 16 / 10;
