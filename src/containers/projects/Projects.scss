@@ -27,6 +27,12 @@ $card-bg: rgba($active, 0.1);
       @include hero-header;
     }
   }
+  &__pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 2rem;
+  }
   .swiper-pagination-bullet {
     background-color: $primary;
   }
@@ -44,8 +50,8 @@ $card-bg: rgba($active, 0.1);
     .swiper-slide {
       width: 280px;
       max-height: 75vh;
+      padding-bottom: 3rem;
       padding-top: 3rem;
-      padding-bottom: 5rem;
       transition: transform 0.3s ease-in-out;
       pointer-events: none;
       &-active {
@@ -78,10 +84,9 @@ $card-bg: rgba($active, 0.1);
   border: 1px solid rgba(108, 232, 255, 0.28);
   box-shadow: 0 8px 24px $glow;
   &__pic {
-    margin-bottom: 0.5rem;
-    padding: 0 1rem;
+    padding: 1rem;
     img {
-      aspect-ratio: 16 / 10;
+      aspect-ratio: 16 / 9;
       width: 100%;
       object-position: center;
     }
@@ -139,7 +144,7 @@ $card-bg: rgba($active, 0.1);
     flex-wrap: wrap;
     gap: 1rem;
     color: $primary;
-    font-size: 15px;
+    font-size: 16px;
     @media (max-width: $medium) {
       font-size: 12px;
     }
@@ -153,12 +158,12 @@ $card-bg: rgba($active, 0.1);
     flex-direction: column;
     justify-content: center;
     h3 {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 400;
     }
     p {
       color: $muted;
-      font-size: 12px;
+      font-size: 14px;
       width: 80%;
     }
   }

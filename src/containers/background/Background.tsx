@@ -57,6 +57,7 @@ const Background = ({ setSelectedPage }: props) => {
           <Swiper
             modules={[Pagination]}
             slidesPerView={1}
+            centeredSlides={true}
             pagination={{
               el: ".swiper-pagination-top",
               clickable: true,
@@ -67,6 +68,7 @@ const Background = ({ setSelectedPage }: props) => {
             }}
             breakpoints={{
               768: {
+                centeredSlides: false,
                 slidesPerView: 2,
                 allowTouchMove: false,
                 spaceBetween: 1,
