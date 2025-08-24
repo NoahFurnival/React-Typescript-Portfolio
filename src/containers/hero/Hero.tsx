@@ -6,7 +6,6 @@ import "./Hero.scss";
 import { SelectedPage } from "@/shared/types";
 import TypeWriter from "@/components/TypeWriter";
 import useMediaQuery from "@/hooks/useMediaQuery";
-import { Loop } from "three/tsl";
 const Waving = () => {
   return (
     <img

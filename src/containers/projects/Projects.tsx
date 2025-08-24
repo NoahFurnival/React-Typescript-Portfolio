@@ -1,7 +1,7 @@
 import { motion, useInView } from "framer-motion";
 import { SelectedPage } from "@/shared/types";
 import { subHeaderVariant, headerVariant } from "@/shared/headerAnimations";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import {
   EffectCoverflow,
@@ -14,9 +14,9 @@ import {
 import ProjectCard from "@/components/ProjectCard";
 import { projects } from "@/shared/projectConstants";
 
-import "swiper/scss";
-import "swiper/scss/effect-coverflow";
-import "swiper/scss/pagination";
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
 import "./Projects.scss";
 
 type props = {

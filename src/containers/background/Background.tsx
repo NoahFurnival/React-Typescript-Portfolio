@@ -1,6 +1,6 @@
 import { motion, type Variants, useInView } from "framer-motion";
 import useMediaQuery from "@/hooks/useMediaQuery";
-import { useRef, useEffect } from "react";
+import { useRef } from "react";
 import "./Background.scss";
 import { headerVariant, subHeaderVariant } from "@/shared/headerAnimations";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -71,7 +71,7 @@ const Background = ({ setSelectedPage }: props) => {
                 allowTouchMove: false,
                 spaceBetween: 1,
                 pagination: {
-                  el: ".swiper-pagination-top", // target the container above
+                  el: ".swiper-pagination-top",
                   clickable: true,
                   renderBullet: (index, className) => {
                     const labels = ["Education", "Experience"];
