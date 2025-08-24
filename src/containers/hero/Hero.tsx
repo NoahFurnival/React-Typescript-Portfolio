@@ -3,7 +3,10 @@ import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import { FaDownload } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Hero.scss";
+import { SelectedPage } from "@/shared/types";
 import TypeWriter from "@/components/TypeWriter";
+import useMediaQuery from "@/hooks/useMediaQuery";
+import { Loop } from "three/tsl";
 const Waving = () => {
   return (
     <img
@@ -13,19 +16,24 @@ const Waving = () => {
     />
   );
 };
-type props = {
+type Props = {
   isTop: boolean;
+  setSelectedPage: (value: SelectedPage) => void;
 };
-const Hero = ({ isTop }: props) => {
+const Hero = ({ isTop, setSelectedPage }: Props) => {
   const typedItems = [
     "Front-end Developer",
     "Back-end Developer",
     "Software Engineer",
     "IT Technician",
   ];
+  const isAboveMediumScreens = useMediaQuery("(max-width: 768px)");
   return (
     <section id="home">
-      <motion.div className="hero">
+      <motion.div
+        className="hero"
+        onViewportEnter={() => setSelectedPage(SelectedPage.Hero)}
+      >
         <div className="hero__header">
           <h1>
             Hi, I'm <span>Noah</span> <Waving />
@@ -50,7 +58,7 @@ const Hero = ({ isTop }: props) => {
             <a href="https://github.com/NoahFurnival" target="_blank">
               <FiGithub />
             </a>
-            <a href="mailto:noahfurnival@gmail.com">
+            <a href="#contact">
               <FiMail />
             </a>
           </div>
@@ -80,12 +88,12 @@ const Hero = ({ isTop }: props) => {
           <img src={cropped} alt="test"></img>
         </div>
         <AnimatePresence>
-          {isTop && (
+          {isTop && !isAboveMediumScreens && (
             <motion.div
               className="hero__scroll"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              transition={{ delay: 1, duration: 0.6 }}
+              transition={{ delay: 1, duration: 0.6, ease: "easeOut" }}
               exit={{
                 opacity: 0,
                 transition: { duration: 0.1, ease: "easeOut" },
@@ -93,12 +101,12 @@ const Hero = ({ isTop }: props) => {
             >
               <motion.div
                 className="hero__scroll-inner"
-                animate={{ y: ["0%", "150%", "0%"] }}
+                animate={{ y: ["0%", "125%", "0%"] }}
                 transition={{
                   delay: 1.25,
-                  duration: 4,
+                  duration: 5,
                   repeat: Infinity,
-                  ease: "easeInOut",
+                  ease: "linear",
                 }}
               ></motion.div>
             </motion.div>

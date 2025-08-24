@@ -16,13 +16,11 @@ $xl: 1280px;
 @mixin hero-header() {
   font-size: 80px;
   font-weight: 900;
-  & {
-    @media (max-width: $xl) {
-      font-size: 60px;
-    }
-    @media (max-width: $large) {
-      font-size: 45px;
-    }
+  @media (max-width: $xl) {
+    font-size: 60px;
+  }
+  @media (max-width: $large) {
+    font-size: 45px;
   }
 }
 @mixin sub($size: 30px) {
@@ -30,31 +28,27 @@ $xl: 1280px;
   font-weight: 300;
   color: $text-sub;
   text-transform: uppercase;
-  & {
-    @media (max-width: $xl) {
-      font-size: 26px;
-    }
-    @media (max-width: $large) {
-      font-size: 20px;
-    }
-    @media (max-width: $small) {
-      font-size: 16px;
-    }
+  @media (max-width: $xl) {
+    font-size: 26px;
+  }
+  @media (max-width: $large) {
+    font-size: 20px;
+  }
+  @media (max-width: $small) {
+    font-size: 16px;
   }
 }
 @mixin section-header() {
   font-size: 60px;
   font-weight: 900;
-  & {
-    @media (max-width: $xl) {
-      font-size: 50px;
-    }
-    @media (max-width: $large) {
-      font-size: 40px;
-    }
-    @media (max-width: $xl) {
-      font-size: 30px;
-    }
+  @media (max-width: $xl) {
+    font-size: 50px;
+  }
+  @media (max-width: $large) {
+    font-size: 40px;
+  }
+  @media (max-width: $xl) {
+    font-size: 30px;
   }
 }
 $muted: #6b7280;
@@ -65,7 +59,6 @@ $font-main: "Poppins", sans-serif;
   box-sizing: border-box;
   font-family: $font-main;
   color-scheme: dark;
-  scroll-behavior: smooth;
 }
 body {
   background: $bg;

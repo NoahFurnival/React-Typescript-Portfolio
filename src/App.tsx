@@ -26,14 +26,12 @@ function App() {
   }, []);
   return (
     <div>
-      <div className="hero-pattern">
-        <Navbar
-          selectedPage={selectedPage}
-          setSelectedPage={setSelectedPage}
-          isTop={isTop}
-        />
-        <Hero isTop={isTop} />
-      </div>
+      <Navbar
+        selectedPage={selectedPage}
+        setSelectedPage={setSelectedPage}
+        isTop={isTop}
+      />
+      <Hero isTop={isTop} setSelectedPage={setSelectedPage} />
       <Skills setSelectedPage={setSelectedPage} />
       <Background setSelectedPage={setSelectedPage} />
       <Projects setSelectedPage={setSelectedPage} />

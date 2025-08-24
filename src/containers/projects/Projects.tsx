@@ -26,15 +26,12 @@ type props = {
 const Projects = ({ setSelectedPage }: props) => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
-  const isInViewMulti = useInView(sectionRef, { amount: 0.2 });
-  useEffect(() => {
-    if (isInViewMulti) {
-      setSelectedPage(SelectedPage.Projects);
-    }
-  }, [isInViewMulti, setSelectedPage]);
   return (
     <section id="projects" ref={sectionRef}>
-      <div className="projects">
+      <motion.div
+        className="projects"
+        onViewportEnter={() => setSelectedPage(SelectedPage.Projects)}
+      >
         <div className="projects__title">
           <motion.h4
             variants={subHeaderVariant}
@@ -88,7 +85,7 @@ const Projects = ({ setSelectedPage }: props) => {
             ))}
           </Swiper>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 };

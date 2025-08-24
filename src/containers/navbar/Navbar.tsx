@@ -27,7 +27,10 @@ const Navbar = ({ selectedPage, isTop, setSelectedPage }: Props) => {
         <div className="navbar__wrapper">
           <div className="navbar__inner">
             <div className="navbar__image">
-              <AnchorLink href="#hero">
+              <AnchorLink
+                href="#home"
+                onClick={() => setSelectedPage(SelectedPage.Hero)}
+              >
                 <img src={logo} alt="logo"></img>
               </AnchorLink>
             </div>

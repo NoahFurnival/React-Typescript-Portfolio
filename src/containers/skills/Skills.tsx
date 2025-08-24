@@ -6,14 +6,12 @@ import { motion, useAnimation, useInView } from "framer-motion";
 import SkillCard from "@/components/SkillCard";
 import { tools, languages, databases, frontEnd } from "@/shared/skillConstants";
 
-
 type props = {
   setSelectedPage: (value: SelectedPage) => void;
 };
 const Skills = ({ setSelectedPage }: props) => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
-  const isInViewMulti = useInView(sectionRef, { amount: 0.5 });
   const controls = useAnimation();
 
   useEffect(() => {
@@ -21,14 +19,13 @@ const Skills = ({ setSelectedPage }: props) => {
       controls.start("visible");
     }
   }, [isInView, controls]);
-  useEffect(() => {
-    if (isInViewMulti) {
-      setSelectedPage(SelectedPage.Skills);
-    }
-  }, [setSelectedPage, isInViewMulti]);
   return (
     <section id="skills" ref={sectionRef}>
-      <motion.div className="skills">
+      <motion.div
+        className="skills"
+        // viewport={{ amount: 0.5 }}
+        onViewportEnter={() => setSelectedPage(SelectedPage.Skills)}
+      >
         <div className="skills__title">
           <motion.h4
             variants={subHeaderVariant}

@@ -21,12 +21,6 @@ const Background = ({ setSelectedPage }: props) => {
   const isAboveMediumScreens = useMediaQuery("(max-width: 768px");
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
-  const isInViewMulti = useInView(sectionRef, { amount: 0.5 });
-  useEffect(() => {
-    if (isInViewMulti) {
-      setSelectedPage(SelectedPage.Background);
-    }
-  }, [setSelectedPage, isInViewMulti]);
   const variants: Variants = {
     hidden: {},
     visible: {
@@ -38,7 +32,10 @@ const Background = ({ setSelectedPage }: props) => {
   };
   return (
     <section id="background" ref={sectionRef}>
-      <motion.div className="background">
+      <motion.div
+        className="background"
+        onViewportEnter={() => setSelectedPage(SelectedPage.Background)}
+      >
         <div className="background__title">
           <motion.h4
             variants={subHeaderVariant}

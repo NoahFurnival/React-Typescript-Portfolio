@@ -1,13 +1,15 @@
 @import "../../App.scss";
 $glow: #a470ff;
 $glow-soft: rgba(164, 112, 255, 0.28);
-$card-bg: rgba($active, 0.2);
+$card-bg: rgba($active, 0.1);
 
+#projects {
+  padding-top: 80px;
+}
 .projects {
   width: 100%;
   max-height: 100vh;
   height: auto;
-  padding-top: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,10 +20,10 @@ $card-bg: rgba($active, 0.2);
     justify-content: center;
     margin-bottom: 1rem;
     flex-direction: column;
-    & h4 {
+    h4 {
       @include sub;
     }
-    & h3 {
+    h3 {
       @include hero-header;
     }
   }
@@ -35,6 +37,10 @@ $card-bg: rgba($active, 0.2);
     width: 100%;
     margin: 1rem 0;
     height: auto;
+    @media (max-width: $xs) {
+      overflow: visible !important;
+    }
+
     .swiper-slide {
       width: 280px;
       height: 75vh;
@@ -49,11 +55,9 @@ $card-bg: rgba($active, 0.2);
       &-prev .project,
       &-next .project {
         box-shadow: 0 8px 24px $glow-soft;
-        & {
-          @media (max-width: $medium) {
-            opacity: 0 !important;
-            visibility: hidden !important;
-          }
+        @media (max-width: $medium) {
+          opacity: 0 !important;
+          visibility: hidden !important;
         }
       }
     }
@@ -72,7 +76,7 @@ $card-bg: rgba($active, 0.2);
   justify-content: center;
   flex-direction: column;
   border: 1px solid rgba(108, 232, 255, 0.28);
-  box-shadow: 0 4px 20px $glow;
+  box-shadow: 0 8px 24px $glow;
   &__pic {
     margin-bottom: 0.5rem;
     padding: 0 1rem;
@@ -136,10 +140,8 @@ $card-bg: rgba($active, 0.2);
     gap: 1rem;
     color: $primary;
     font-size: 15px;
-    & {
-      @media (max-width: $medium) {
-        font-size: 12px;
-      }
+    @media (max-width: $medium) {
+      font-size: 12px;
     }
   }
   &__body {

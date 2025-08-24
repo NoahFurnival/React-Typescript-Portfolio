@@ -21,11 +21,13 @@
     background: rgba($muted, 0.2);
   }
 }
+#skills {
+  padding-top: 80px;
+}
 .skills {
   width: 100%;
   min-height: 100vh;
   height: auto;
-  padding-top: 80px;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
@@ -35,10 +37,10 @@
     align-items: center;
     flex-direction: column;
     justify-content: center;
-    & h4 {
+    h4 {
       @include sub;
     }
-    & h3 {
+    h3 {
       @include hero-header;
     }
   }
@@ -54,18 +56,16 @@
     grid-template-rows: repeat(2, 1fr);
     gap: 2rem;
     margin-bottom: 70px;
-    & {
-      @media (max-width: $medium) {
-        width: 80%;
-        grid-template-columns: repeat(1, 1fr);
-        grid-template-rows: repeat(1, 1fr);
-      }
+    @media (max-width: $medium) {
+      width: 80%;
+      grid-template-columns: repeat(1, 1fr);
+      grid-template-rows: repeat(1, 1fr);
     }
-    & > * {
+    > * {
       padding: 20px;
       /* background: rgba($active, 0.5); */
       background: rgba(#10121a, 0.2);
-      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5); 
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.5);
       border-radius: 15px;
     }
     h5 {
