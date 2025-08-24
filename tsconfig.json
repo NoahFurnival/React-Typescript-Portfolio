@@ -10,12 +10,9 @@
     "jsx": "react-jsx",
 
     "baseUrl": ".",
-    "paths": {
-      "@/*": ["src/*"]
-    },
+    "paths": { "@/*": ["src/*"] },
 
     "noEmit": true,
-    "allowImportingTsExtensions": true,
     "verbatimModuleSyntax": true
   },
   "include": ["src", "vite.config.ts"]

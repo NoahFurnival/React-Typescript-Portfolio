@@ -18,7 +18,7 @@ type props = {
   setSelectedPage: (value: SelectedPage) => void;
 };
 const Background = ({ setSelectedPage }: props) => {
-  const isAboveMediumScreens = useMediaQuery("(max-width: 768px");
+  const isAboveMediumScreens = useMediaQuery("(max-width: 768px)");
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
   const variants: Variants = {

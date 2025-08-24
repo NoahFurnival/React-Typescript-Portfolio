@@ -66,7 +66,7 @@ const Projects = ({ setSelectedPage }: props) => {
             centeredSlides={true}
             slidesPerView={"auto"}
             spaceBetween={20}
-            autoplay={{ delay: 2500 }}
+            autoplay={{ delay: 2500, disableOnInteraction: false }}
             coverflowEffect={{
               rotate: 50,
               stretch: 0,
