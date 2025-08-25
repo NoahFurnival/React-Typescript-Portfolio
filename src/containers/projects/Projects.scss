@@ -44,9 +44,6 @@ $card-bg: rgba($active, 0.1);
     margin: 1rem 0;
     padding-bottom: 75px;
     padding-top: 40px;
-    @media (max-width: $xs) {
-      overflow: visible !important;
-    }
 
     .swiper-slide {
       width: 400px;
