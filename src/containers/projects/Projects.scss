@@ -42,14 +42,15 @@ $card-bg: rgba($active, 0.1);
   &__swiper {
     width: 100%;
     margin: 1rem 0;
-    padding: 100px 0;
+    padding-bottom: 75px;
+    padding-top: 40px;
     @media (max-width: $xs) {
       overflow: visible !important;
     }
 
     .swiper-slide {
       width: 400px;
-      height: 600px;
+      height: 550px;
       background-position: center;
       background-size: cover;
       transition: transform 0.3s ease-in-out;
@@ -64,7 +65,7 @@ $card-bg: rgba($active, 0.1);
       }
       &-prev .project,
       &-next .project {
-        box-shadow: 0 8px 24px $glow-soft;
+        box-shadow: 0 8px 12px $glow-soft;
         @media (max-width: $medium) {
           opacity: 0 !important;
           visibility: hidden !important;
@@ -86,7 +87,7 @@ $card-bg: rgba($active, 0.1);
   justify-content: center;
   flex-direction: column;
   border: 1px solid rgba(108, 232, 255, 0.28);
-  box-shadow: 0 8px 24px $glow;
+  box-shadow: 0 8px 12px $glow;
   &__pic {
     img {
       aspect-ratio: 16 / 9;

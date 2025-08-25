@@ -1,4 +1,5 @@
-@use "@/App.scss" as *;
+@import "../../App.scss";
+@import "https://fonts.googleapis.com/css?family=Alex Brush";
 .navbar {
   position: fixed;
   padding: 1rem 2rem;
@@ -10,8 +11,13 @@
     background: none;
   }
   &__image * {
-    width: 200px;
-    height: 50px;
+    color: primary;
+    font-size: 30px;
+    font-family: monospace;
+    text-decoration: none;
+    .navbar__name {
+      font-family: "Alex Brush";
+    }
   }
   &__item {
     padding-bottom: 10px;

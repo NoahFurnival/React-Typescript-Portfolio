@@ -31,7 +31,9 @@ const Navbar = ({ selectedPage, isTop, setSelectedPage }: Props) => {
                 href="#home"
                 onClick={() => setSelectedPage(SelectedPage.Hero)}
               >
-                <img src={logo} alt="logo"></img>
+                <span>{"<"}</span>
+                <span className="navbar__name">Noah Furnival</span>
+                <span>{"/>"}</span>
               </AnchorLink>
             </div>
             {isAboveMediumScreens ? (

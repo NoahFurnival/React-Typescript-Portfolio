@@ -75,7 +75,7 @@ const Projects = ({ setSelectedPage }: props) => {
               slideShadows: false,
             }}
             breakpoints={{
-              1024: { slidesPerView: 3 },
+              1280: { slidesPerView: 3 },
             }}
           >
             {projects.map((item, idx) => (
