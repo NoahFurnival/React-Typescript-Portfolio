@@ -42,18 +42,22 @@ $card-bg: rgba($active, 0.1);
   &__swiper {
     width: 100%;
     margin: 1rem 0;
-    height: auto;
+    padding: 100px 0;
     @media (max-width: $xs) {
       overflow: visible !important;
     }
 
     .swiper-slide {
-      width: 280px;
-      max-height: 75vh;
-      padding-bottom: 3rem;
-      padding-top: 3rem;
+      width: 400px;
+      height: 600px;
+      background-position: center;
+      background-size: cover;
       transition: transform 0.3s ease-in-out;
       pointer-events: none;
+      @media (max-width: $medium) {
+        width: 300px;
+        height: 450px;
+      }
       &-active {
         transform: scale(1.1) !important;
         pointer-events: all !important;
@@ -74,7 +78,7 @@ $card-bg: rgba($active, 0.1);
   position: relative;
   border-radius: 40px;
   height: 100%;
-  padding: 1rem;
+  padding: 2rem;
   display: flex;
   gap: 1rem;
   background: $card-bg;
@@ -84,11 +88,9 @@ $card-bg: rgba($active, 0.1);
   border: 1px solid rgba(108, 232, 255, 0.28);
   box-shadow: 0 8px 24px $glow;
   &__pic {
-    padding: 1rem;
     img {
       aspect-ratio: 16 / 9;
       width: 100%;
-      object-position: center;
     }
   }
   &__footer {
@@ -101,8 +103,8 @@ $card-bg: rgba($active, 0.1);
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 40px;
-    height: 40px;
+    width: 35px;
+    height: 35px;
     font-size: 20px;
     border-radius: 50%;
     background: radial-gradient(
@@ -140,18 +142,15 @@ $card-bg: rgba($active, 0.1);
   &__softwares {
     display: flex;
     align-items: center;
-    padding-left: 1rem;
     flex-wrap: wrap;
     gap: 1rem;
     color: $primary;
-    font-size: 16px;
+    font-size: 14px;
     @media (max-width: $medium) {
       font-size: 12px;
     }
   }
   &__body {
-    padding-left: 1rem;
-    width: 120%;
     gap: 0.5rem;
     display: flex;
     align-items: flex-start;
@@ -160,11 +159,17 @@ $card-bg: rgba($active, 0.1);
     h3 {
       font-size: 22px;
       font-weight: 400;
+      @media (max-width: $medium) {
+        font-size: 15px;
+      }
     }
     p {
       color: $muted;
       font-size: 14px;
       width: 80%;
+      @media (max-width: $medium) {
+        font-size: 10px;
+      }
     }
   }
 }

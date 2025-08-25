@@ -62,7 +62,7 @@ const Projects = ({ setSelectedPage }: props) => {
             effect="coverflow"
             grabCursor={true}
             keyboard={{ enabled: true }}
-            pagination={{ el: ".projects__pagination", clickable: true }}
+            pagination={{ clickable: true }}
             centeredSlides={true}
             slidesPerView={"auto"}
             spaceBetween={20}
@@ -85,7 +85,6 @@ const Projects = ({ setSelectedPage }: props) => {
             ))}
           </Swiper>
         </motion.div>
-        <div className="projects__pagination"> </div>
       </motion.div>
     </section>
   );

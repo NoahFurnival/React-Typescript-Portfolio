@@ -55,23 +55,23 @@ const Background = ({ setSelectedPage }: props) => {
         <div className="background__main">
           {isAboveMediumScreens && <div className="swiper-pagination-top" />}
           <Swiper
+            className="background__swiper"
             modules={[Pagination]}
             slidesPerView={1}
-            centeredSlides={true}
+            spaceBetween={0}
+            slidesOffsetAfter={0}
             pagination={{
               el: ".swiper-pagination-top",
               clickable: true,
               renderBullet: (index, className) => {
-                const labels = ["Education", "Experience"];
+                const labels = ["Experience", "Education"];
                 return `<button class="${className} background__tab">${labels[index]}</button>`;
               },
             }}
             breakpoints={{
               768: {
-                centeredSlides: false,
+                slidesOffsetAfter: 30,
                 slidesPerView: 2,
-                allowTouchMove: false,
-                spaceBetween: 1,
                 pagination: {
                   el: ".swiper-pagination-top",
                   clickable: true,
@@ -83,30 +83,6 @@ const Background = ({ setSelectedPage }: props) => {
               },
             }}
           >
-            <SwiperSlide>
-              <motion.div className="background__education">
-                {!isAboveMediumScreens && <h5> Education </h5>}
-                <motion.div
-                  className="background__education-inner"
-                  initial="hidden"
-                  variants={variants}
-                  animate={isInView ? "visible" : "hidden"}
-                >
-                  {education.map((item) => {
-                    return (
-                      <EducationCard
-                        start={item.start}
-                        end={item.end}
-                        certificate={item.certificate}
-                        key={item.school}
-                        school={item.school}
-                        description={item.description}
-                      />
-                    );
-                  })}
-                </motion.div>
-              </motion.div>
-            </SwiperSlide>
             <SwiperSlide>
               <motion.div className="background__experience">
                 {!isAboveMediumScreens && <h5> Experience </h5>}
@@ -125,6 +101,30 @@ const Background = ({ setSelectedPage }: props) => {
                         key={item.title}
                         duties={item.duties}
                         company={item.company}
+                      />
+                    );
+                  })}
+                </motion.div>
+              </motion.div>
+            </SwiperSlide>
+            <SwiperSlide>
+              <motion.div className="background__education">
+                {!isAboveMediumScreens && <h5> Education </h5>}
+                <motion.div
+                  className="background__education-inner"
+                  initial="hidden"
+                  variants={variants}
+                  animate={isInView ? "visible" : "hidden"}
+                >
+                  {education.map((item) => {
+                    return (
+                      <EducationCard
+                        start={item.start}
+                        end={item.end}
+                        certificate={item.certificate}
+                        key={item.school}
+                        school={item.school}
+                        description={item.description}
                       />
                     );
                   })}
