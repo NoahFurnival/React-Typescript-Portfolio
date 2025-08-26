@@ -20,6 +20,9 @@ type Values = {
 
 type Errors = Partial<Record<keyof Values, string>>;
 
+const SITE_KEY = import.meta.env.RECAPTCHA_SITE_KEY;
+const hasCaptcha = Boolean(SITE_KEY);
+
 const initialValues: Values = { name: "", email: "", message: "", token: null };
 
 const emailOk = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
@@ -206,13 +209,15 @@ export default function Contact({ setSelectedPage }: Props) {
                 )}
               </div>
 
-              <div className="contact__captcha">
-                <ReCAPTCHA
-                  ref={recaptchaRef}
-                  sitekey={import.meta.env.RECAPTCHA_SITE_KEY}
-                  onChange={onCaptcha}
-                />
-              </div>
+              {hasCaptcha && (
+                <div className="contact__captcha">
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={SITE_KEY}
+                    onChange={onCaptcha}
+                  />
+                </div>
+              )}
               {errors.token && (
                 <div className="contact__error">{errors.token}</div>
               )}
