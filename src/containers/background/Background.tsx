@@ -14,10 +14,10 @@ import { SelectedPage } from "@/shared/types";
 import "swiper/css";
 import "swiper/css/pagination";
 
-type props = {
+type Props = {
   setSelectedPage: (value: SelectedPage) => void;
 };
-const Background = ({ setSelectedPage }: props) => {
+const Background = ({ setSelectedPage }: Props) => {
   const isAboveMediumScreens = useMediaQuery("(max-width: 768px)");
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });

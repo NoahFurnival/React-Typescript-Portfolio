@@ -35,7 +35,7 @@ function App() {
       <Skills setSelectedPage={setSelectedPage} />
       <Background setSelectedPage={setSelectedPage} />
       <Projects setSelectedPage={setSelectedPage} />
-      <Contact />
+      <Contact setSelectedPage={setSelectedPage} />
     </div>
   );
 }

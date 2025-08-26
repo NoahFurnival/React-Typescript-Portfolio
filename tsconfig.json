@@ -3,7 +3,7 @@
     "target": "ES2022",
     "lib": ["ES2022", "DOM", "DOM.Iterable"],
     "module": "ESNext",
-    "moduleResolution": "bundler",
+    "moduleResolution": "node",
     "skipLibCheck": true,
     "strict": true,
 
@@ -12,8 +12,7 @@
     "baseUrl": ".",
     "paths": { "@/*": ["src/*"] },
 
-    "noEmit": true,
-    "verbatimModuleSyntax": true
+    "noEmit": true
   },
   "include": ["src", "vite.config.ts"]
 }
