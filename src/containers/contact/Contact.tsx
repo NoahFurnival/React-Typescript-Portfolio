@@ -20,7 +20,7 @@ type Values = {
 
 type Errors = Partial<Record<keyof Values, string>>;
 
-const SITE_KEY = import.meta.env.RECAPTCHA_SITE_KEY;
+const SITE_KEY = import.meta.env.VITE_RECAPTCHA_SITE_KEY;
 const hasCaptcha = Boolean(SITE_KEY);
 
 const initialValues: Values = { name: "", email: "", message: "", token: null };
