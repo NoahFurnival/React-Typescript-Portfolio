@@ -1,4 +1,5 @@
 import { useRef, useState } from "react";
+import { motion } from "framer-motion";
 import ReCAPTCHA from "react-google-recaptcha";
 import {
   FaUser,
@@ -8,6 +9,7 @@ import {
 } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
 import "./Contact.scss";
+import { SelectedPage } from "@/shared/types";
 
 type Values = {
   name: string;
@@ -25,7 +27,10 @@ const initialValues: Values = { name: "", email: "", message: "", token: null };
 
 const emailOk = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
 
-export default function Contact() {
+type Props = {
+  setSelectedPage: (value: SelectedPage) => void;
+};
+export default function Contact({ setSelectedPage }: Props) {
   const [values, setValues] = useState<Values>(initialValues);
   const [errors, setErrors] = useState<Errors>({});
   const recaptchaRef = useRef<ReCAPTCHA>(null);
@@ -106,121 +111,126 @@ export default function Contact() {
   };
 
   return (
-    <section className="contact" id="contact">
-      <Toaster
-        position="top-right"
-        toastOptions={{
-          style: {
-            background: "#0b0f1a",
-            color: "#c9d1d9",
-            border: "1px solid rgba(255,255,255,0.08)",
-          },
-          success: {
-            iconTheme: {
-              primary: "#22c55e",
-              secondary: "#0b0f1a",
+    <section id="contact">
+      <motion.div
+        className="contact"
+        onViewportEnter={() => setSelectedPage(SelectedPage.Contact)}
+      >
+        <Toaster
+          position="top-right"
+          toastOptions={{
+            style: {
+              background: "#0b0f1a",
+              color: "#c9d1d9",
+              border: "1px solid rgba(255,255,255,0.08)",
             },
-          },
-          loading: {},
-        }}
-      />
+            success: {
+              iconTheme: {
+                primary: "#22c55e",
+                secondary: "#0b0f1a",
+              },
+            },
+            loading: {},
+          }}
+        />
 
-      <div className="contact__wrap">
-        <h2 className="contact__title">Let’s get in touch</h2>
-        <p className="contact__subtitle">
-          Have a project or just want to say hi? Drop a message below.
-        </p>
+        <div className="contact__wrap">
+          <h2 className="contact__title">Let’s get in touch</h2>
+          <p className="contact__subtitle">
+            Have a project or just want to say hi? Drop a message below.
+          </p>
 
-        <div className="contact__card">
-          <form onSubmit={onSubmit} noValidate>
-            <div className="contact__row">
-              <div>
+          <div className="contact__card">
+            <form onSubmit={onSubmit} noValidate>
+              <div className="contact__row">
+                <div>
+                  <div
+                    className={`contact__field ${errors.name ? "has-error" : ""}`}
+                  >
+                    <span className="contact__icon">
+                      <FaUser />
+                    </span>
+                    <input
+                      className="contact__input"
+                      type="text"
+                      name="name"
+                      placeholder="Your name"
+                      value={values.name}
+                      onChange={onChange("name")}
+                      autoComplete="name"
+                    />
+                  </div>
+                  {errors.name && (
+                    <div className="contact__error">{errors.name}</div>
+                  )}
+                </div>
+
+                <div>
+                  <div
+                    className={`contact__field ${errors.email ? "has-error" : ""}`}
+                  >
+                    <span className="contact__icon">
+                      <FaEnvelope />
+                    </span>
+                    <input
+                      className="contact__input"
+                      type="email"
+                      name="email"
+                      placeholder="you@example.com"
+                      value={values.email}
+                      onChange={onChange("email")}
+                      autoComplete="email"
+                    />
+                  </div>
+                  {errors.email && (
+                    <div className="contact__error">{errors.email}</div>
+                  )}
+                </div>
+              </div>
+
+              <div style={{ marginTop: 14 }}>
                 <div
-                  className={`contact__field ${errors.name ? "has-error" : ""}`}
+                  className={`contact__field contact__field--textarea ${errors.message ? "has-error" : ""}`}
                 >
-                  <span className="contact__icon">
-                    <FaUser />
+                  <span className="contact__icon" style={{ marginTop: 4 }}>
+                    <FaRegCommentDots />
                   </span>
-                  <input
-                    className="contact__input"
-                    type="text"
-                    name="name"
-                    placeholder="Your name"
-                    value={values.name}
-                    onChange={onChange("name")}
-                    autoComplete="name"
+                  <textarea
+                    className="contact__textarea"
+                    name="message"
+                    placeholder="Tell me a bit about your project…"
+                    rows={5}
+                    value={values.message}
+                    onChange={onChange("message")}
                   />
                 </div>
-                {errors.name && (
-                  <div className="contact__error">{errors.name}</div>
+                {errors.message && (
+                  <div className="contact__error">{errors.message}</div>
                 )}
               </div>
 
-              <div>
-                <div
-                  className={`contact__field ${errors.email ? "has-error" : ""}`}
-                >
-                  <span className="contact__icon">
-                    <FaEnvelope />
-                  </span>
-                  <input
-                    className="contact__input"
-                    type="email"
-                    name="email"
-                    placeholder="you@example.com"
-                    value={values.email}
-                    onChange={onChange("email")}
-                    autoComplete="email"
+              {hasCaptcha && (
+                <div className="contact__captcha">
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={SITE_KEY}
+                    onChange={onCaptcha}
                   />
                 </div>
-                {errors.email && (
-                  <div className="contact__error">{errors.email}</div>
-                )}
-              </div>
-            </div>
-
-            <div style={{ marginTop: 14 }}>
-              <div
-                className={`contact__field contact__field--textarea ${errors.message ? "has-error" : ""}`}
-              >
-                <span className="contact__icon" style={{ marginTop: 4 }}>
-                  <FaRegCommentDots />
-                </span>
-                <textarea
-                  className="contact__textarea"
-                  name="message"
-                  placeholder="Tell me a bit about your project…"
-                  rows={5}
-                  value={values.message}
-                  onChange={onChange("message")}
-                />
-              </div>
-              {errors.message && (
-                <div className="contact__error">{errors.message}</div>
               )}
-            </div>
+              {errors.token && (
+                <div className="contact__error">{errors.token}</div>
+              )}
 
-            {hasCaptcha && (
-              <div className="contact__captcha">
-                <ReCAPTCHA
-                  ref={recaptchaRef}
-                  sitekey={SITE_KEY}
-                  onChange={onCaptcha}
-                />
+              <div className="contact__actions">
+                <button type="submit" className="contact__btn">
+                  <FaPaperPlane /> Send message
+                </button>
               </div>
-            )}
-            {errors.token && (
-              <div className="contact__error">{errors.token}</div>
-            )}
-
-            <div className="contact__actions">
-              <button type="submit" className="contact__btn">
-                <FaPaperPlane /> Send message
-              </button>
-            </div>
-          </form>
+            </form>
+          </div>
         </div>
-      </div>
+      </motion.div>
     </section>
   );
 }
