@@ -135,10 +135,11 @@ export default function Contact({ setSelectedPage }: Props) {
         />
 
         <div className="contact__wrap">
-          <h2 className="contact__title">Let’s get in touch</h2>
-          <p className="contact__subtitle">
-            Have a project or just want to say hi? Drop a message below.
-          </p>
+          <div className="contact__title">
+            <h4>Reach Out To Me</h4>
+
+            <h3>Contact</h3>
+          </div>
 
           <div className="contact__card">
             <form onSubmit={onSubmit} noValidate>
@@ -148,7 +149,7 @@ export default function Contact({ setSelectedPage }: Props) {
                     className={`contact__field ${errors.name ? "has-error" : ""}`}
                   >
                     <span className="contact__icon">
-                      <FaUser />
+                      <FaUser size={24} />
                     </span>
                     <input
                       className="contact__input"
@@ -170,7 +171,7 @@ export default function Contact({ setSelectedPage }: Props) {
                     className={`contact__field ${errors.email ? "has-error" : ""}`}
                   >
                     <span className="contact__icon">
-                      <FaEnvelope />
+                      <FaEnvelope size={24} />
                     </span>
                     <input
                       className="contact__input"
@@ -193,7 +194,7 @@ export default function Contact({ setSelectedPage }: Props) {
                   className={`contact__field contact__field--textarea ${errors.message ? "has-error" : ""}`}
                 >
                   <span className="contact__icon" style={{ marginTop: 4 }}>
-                    <FaRegCommentDots />
+                    <FaRegCommentDots size={24} />
                   </span>
                   <textarea
                     className="contact__textarea"
