@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { subHeaderVariant, headerVariant } from "@/shared/headerAnimations";
+import { motion, useInView } from "framer-motion";
 import ReCAPTCHA from "react-google-recaptcha";
 import {
   FaUser,
@@ -110,8 +111,11 @@ export default function Contact({ setSelectedPage }: Props) {
     );
   };
 
+  const sectionRef = useRef(null);
+  const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
+
   return (
-    <section id="contact">
+    <section id="contact" ref={sectionRef}>
       <motion.div
         className="contact"
         onViewportEnter={() => setSelectedPage(SelectedPage.Contact)}
@@ -136,12 +140,30 @@ export default function Contact({ setSelectedPage }: Props) {
 
         <div className="contact__wrap">
           <div className="contact__title">
-            <h4>Reach Out To Me</h4>
+            <motion.h4
+              variants={subHeaderVariant}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+            >
+              Reach Out To Me
+            </motion.h4>
 
-            <h3>Contact</h3>
+            <motion.h3
+              variants={headerVariant}
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+            >
+              Contact
+            </motion.h3>
           </div>
 
-          <div className="contact__card">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ ease: "easeInOut", duration: 0.6 }}
+            viewport={{ once: true }}
+            className="contact__card"
+          >
             <form onSubmit={onSubmit} noValidate>
               <div className="contact__row">
                 <div>
@@ -229,7 +251,7 @@ export default function Contact({ setSelectedPage }: Props) {
                 </button>
               </div>
             </form>
-          </div>
+          </motion.div>
         </div>
       </motion.div>
     </section>

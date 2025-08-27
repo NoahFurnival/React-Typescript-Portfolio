@@ -8,7 +8,7 @@ export const headerVariant: Variants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.4,
+      duration: 0.6,
       ease: "easeOut",
     },
   },
@@ -23,7 +23,7 @@ export const subHeaderVariant: Variants = {
     opacity: 1,
     y: 0,
     transition: {
-      duration: 0.3,
+      duration: 0.5,
       ease: "easeOut",
     },
   },
