@@ -46,8 +46,8 @@ $card-bg: rgba($active, 0.1);
     padding-top: 40px;
 
     .swiper-slide {
-      width: 400px;
-      height: 550px;
+      width: 350px;
+      height: 500px;
       background-position: center;
       background-size: cover;
       transition: transform 0.3s ease-in-out;
@@ -55,9 +55,6 @@ $card-bg: rgba($active, 0.1);
       @media (max-width: $medium) {
         width: 300px;
         height: 450px;
-      }
-      @media (max-width: $xs) {
-        width: 250px;
       }
       &-active {
         transform: scale(1.1) !important;
@@ -76,37 +73,40 @@ $card-bg: rgba($active, 0.1);
 }
 
 .project {
-  position: relative;
   border-radius: 40px;
-  height: 100%;
-  padding: 2rem;
   display: flex;
-  gap: 1rem;
-  background: $card-bg;
-  align-items: flex-start;
-  justify-content: center;
+  align-items: center;
   flex-direction: column;
+  justify-content: center;
+  padding: 2rem 2rem;
+  background: $card-bg;
   border: 1px solid rgba(108, 232, 255, 0.28);
   box-shadow: 0 8px 12px $glow;
   &__pic {
+    display: flex;
+    position: relative;
+    justify-content: center;
     img {
       aspect-ratio: 16 / 9;
-      width: 100%;
+      width: 80%;
     }
   }
   &__footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     width: 100%;
-  }
-  &__link {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 35px;
-    height: 35px;
-    font-size: 20px;
+  }
+  &__link {
+    position: absolute;
+    display: flex;
+    top: 5%;
+    right: 12%;
+    align-items: center;
+    justify-content: center;
+    width: 25px;
+    height: 25px;
+    font-size: 15px;
     border-radius: 50%;
     background: radial-gradient(
       circle at 40% 40%,
@@ -145,28 +145,29 @@ $card-bg: rgba($active, 0.1);
     align-items: center;
     flex-wrap: wrap;
     gap: 1rem;
+    margin-top: 0.5rem;
     color: $primary;
     font-size: 14px;
     @media (max-width: $medium) {
-      font-size: 12px;
+      font-size: 11px;
     }
   }
   &__body {
-    gap: 0.5rem;
     display: flex;
-    align-items: flex-start;
     flex-direction: column;
-    justify-content: center;
+    margin-top: 0.5rem;
+    align-items: center;
+    gap: 0.5rem;
     h3 {
-      font-size: 22px;
-      font-weight: 400;
+      font-size: 20px;
+      font-weight: 500;
       @media (max-width: $medium) {
         font-size: 15px;
       }
     }
     p {
       color: $muted;
-      font-size: 14px;
+      font-size: 12px;
       width: 80%;
       @media (max-width: $medium) {
         font-size: 10px;

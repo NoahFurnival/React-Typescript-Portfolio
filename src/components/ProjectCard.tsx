@@ -23,17 +23,6 @@ const ProjectCard = ({
     <motion.div className="project">
       <div className="project__pic">
         <img src={picture} alt={title} loading="lazy" />
-      </div>
-      <div className="project__body">
-        <h3 className="project__title">{title}</h3>
-        <p className="project__desc">{description}</p>
-      </div>
-      <div className="project__footer">
-        <div className="project__softwares">
-          {softwares.map((item, i) => {
-            return <span key={i}>#{item}</span>;
-          })}
-        </div>
         <div className="project__link">
           {github ? (
             <a href={link} target="_blank">
@@ -44,6 +33,17 @@ const ProjectCard = ({
               <FiGlobe />
             </a>
           )}
+        </div>
+      </div>
+      <div className="project__body">
+        <h3 className="project__title">{title}</h3>
+        <p className="project__desc">{description}</p>
+      </div>
+      <div className="project__footer">
+        <div className="project__softwares">
+          {softwares.map((item, i) => {
+            return <span key={i}>#{item}</span>;
+          })}
         </div>
       </div>
     </motion.div>
