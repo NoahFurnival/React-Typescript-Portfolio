@@ -56,6 +56,9 @@ $card-bg: rgba($active, 0.1);
         width: 300px;
         height: 450px;
       }
+      @media (max-width: $medium) {
+        width: 275px;
+      }
       &-active {
         transform: scale(1.1) !important;
         pointer-events: all !important;
