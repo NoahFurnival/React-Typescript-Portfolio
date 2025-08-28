@@ -6,9 +6,9 @@ export const projects: Project[] = [
   {
     picture: vl,
     title: "VisionLeads Website",
-    softwares: ["Tailwindcss", "Javascript"],
+    softwares: ["Tailwindcss", "Typescript", "react"],
     description:
-      "A clean, single-page portfolio site built to showcase Vision Leads’ services. The site includes a clear call-to-action encouraging visitors to request a free ICP (Ideal Customer Profile) assessment, connected through a webhook for seamless lead capture.",
+      "A clean website built in react and tailwind that show cases VisionLeads services. The site includes a clear call-to-action encouraging visitors to request a free ICP (Ideal Customer Persona) assessment.",
     link: "https://visionleads.io/",
     github: false,
   },
@@ -26,7 +26,7 @@ export const projects: Project[] = [
     title: "Blog Website",
     softwares: ["PHP", "Javascript", "CSS"],
     description:
-      "Developed a full-stack blogging platform with my team using PHP, JavaScript, and CSS. The site includes user account creation and authentication (sign-up/sign-in), along with core blog functionality to create, view, and delete posts. Built with a focus on usability and clean design.",
+      "Developed a full-stack blogging platform with my team using PHP, JavaScript, and CSS. The site includes user account creation and authentication (sign-up/sign-in), along with core blog functionality to create, view, and delete posts.",
     link: "https://github.com/DevChloee/Team_Project_Making-BLog_PHP#",
     github: true,
   },

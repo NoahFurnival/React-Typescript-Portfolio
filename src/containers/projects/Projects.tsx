@@ -1,5 +1,4 @@
 import { motion, useInView } from "framer-motion";
-import { SelectedPage } from "@/shared/types";
 import { subHeaderVariant, headerVariant } from "@/shared/headerAnimations";
 import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -19,19 +18,12 @@ import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 import "./Projects.scss";
 
-type props = {
-  setSelectedPage: (value: SelectedPage) => void;
-};
-
-const Projects = ({ setSelectedPage }: props) => {
+const Projects = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
   return (
     <section id="projects" ref={sectionRef}>
-      <motion.div
-        className="projects"
-        onViewportEnter={() => setSelectedPage(SelectedPage.Projects)}
-      >
+      <motion.div className="projects">
         <div className="projects__title">
           <motion.h4
             variants={subHeaderVariant}

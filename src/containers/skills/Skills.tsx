@@ -1,4 +1,3 @@
-import { SelectedPage } from "@/shared/types";
 import "./Skills.scss";
 import { headerVariant, subHeaderVariant } from "@/shared/headerAnimations";
 import { useEffect, useRef } from "react";
@@ -6,10 +5,7 @@ import { motion, useAnimation, useInView } from "framer-motion";
 import SkillCard from "@/components/SkillCard";
 import { tools, languages, databases, frontEnd } from "@/shared/skillConstants";
 
-type props = {
-  setSelectedPage: (value: SelectedPage) => void;
-};
-const Skills = ({ setSelectedPage }: props) => {
+const Skills = () => {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
   const controls = useAnimation();
@@ -21,11 +17,7 @@ const Skills = ({ setSelectedPage }: props) => {
   }, [isInView, controls]);
   return (
     <section id="skills" ref={sectionRef}>
-      <motion.div
-        className="skills"
-        // viewport={{ amount: 0.5 }}
-        onViewportEnter={() => setSelectedPage(SelectedPage.Skills)}
-      >
+      <motion.div className="skills">
         <div className="skills__title">
           <motion.h4
             variants={subHeaderVariant}

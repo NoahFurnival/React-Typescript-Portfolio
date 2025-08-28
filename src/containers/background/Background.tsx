@@ -9,15 +9,11 @@ import EducationCard from "@/components/EducationCard";
 import ExperienceCard from "@/components/ExperienceCard";
 import { experience } from "@/shared/experienceConstants";
 import { education } from "@/shared/educationConstants";
-import { SelectedPage } from "@/shared/types";
 
 import "swiper/css";
 import "swiper/css/pagination";
 
-type Props = {
-  setSelectedPage: (value: SelectedPage) => void;
-};
-const Background = ({ setSelectedPage }: Props) => {
+const Background = () => {
   const isAboveMediumScreens = useMediaQuery("(max-width: 768px)");
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
@@ -32,10 +28,7 @@ const Background = ({ setSelectedPage }: Props) => {
   };
   return (
     <section id="background" ref={sectionRef}>
-      <motion.div
-        className="background"
-        onViewportEnter={() => setSelectedPage(SelectedPage.Background)}
-      >
+      <motion.div className="background">
         <div className="background__title">
           <motion.h4
             variants={subHeaderVariant}

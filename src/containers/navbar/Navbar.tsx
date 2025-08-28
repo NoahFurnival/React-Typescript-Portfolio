@@ -1,5 +1,4 @@
 import { useState } from "react";
-import logo from "@/assets/logo.png";
 import "@/containers/navbar/Navbar.scss";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import AnchorLink from "react-anchor-link-smooth-scroll";

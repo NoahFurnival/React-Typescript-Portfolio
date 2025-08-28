@@ -3,7 +3,6 @@ import { FiGithub, FiLinkedin, FiMail } from "react-icons/fi";
 import { FaDownload } from "react-icons/fa";
 import { motion, AnimatePresence } from "framer-motion";
 import "./Hero.scss";
-import { SelectedPage } from "@/shared/types";
 import TypeWriter from "@/components/TypeWriter";
 import useMediaQuery from "@/hooks/useMediaQuery";
 const Waving = () => {
@@ -17,9 +16,8 @@ const Waving = () => {
 };
 type Props = {
   isTop: boolean;
-  setSelectedPage: (value: SelectedPage) => void;
 };
-const Hero = ({ isTop, setSelectedPage }: Props) => {
+const Hero = ({ isTop }: Props) => {
   const typedItems = [
     "Front-end Developer",
     "Back-end Developer",
@@ -29,10 +27,7 @@ const Hero = ({ isTop, setSelectedPage }: Props) => {
   const isAboveMediumScreens = useMediaQuery("(max-width: 768px)");
   return (
     <section id="home">
-      <motion.div
-        className="hero"
-        onViewportEnter={() => setSelectedPage(SelectedPage.Hero)}
-      >
+      <motion.div className="hero">
         <div className="hero__header">
           <h1>
             Hi, I'm <span>Noah</span> <Waving />

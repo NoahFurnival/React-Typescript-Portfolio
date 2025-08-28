@@ -31,11 +31,11 @@ function App() {
         setSelectedPage={setSelectedPage}
         isTop={isTop}
       />
-      <Hero isTop={isTop} setSelectedPage={setSelectedPage} />
-      <Skills setSelectedPage={setSelectedPage} />
-      <Background setSelectedPage={setSelectedPage} />
-      <Projects setSelectedPage={setSelectedPage} />
-      <Contact setSelectedPage={setSelectedPage} />
+      <Hero isTop={isTop} />
+      <Skills />
+      <Background />
+      <Projects />
+      <Contact />
     </div>
   );
 }

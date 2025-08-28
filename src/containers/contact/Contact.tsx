@@ -10,7 +10,6 @@ import {
 } from "react-icons/fa";
 import toast, { Toaster } from "react-hot-toast";
 import "./Contact.scss";
-import { SelectedPage } from "@/shared/types";
 
 type Values = {
   name: string;
@@ -27,11 +26,7 @@ const hasCaptcha = Boolean(SITE_KEY);
 const initialValues: Values = { name: "", email: "", message: "", token: null };
 
 const emailOk = (v: string) => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
-
-type Props = {
-  setSelectedPage: (value: SelectedPage) => void;
-};
-export default function Contact({ setSelectedPage }: Props) {
+export default function Contact() {
   const [values, setValues] = useState<Values>(initialValues);
   const [errors, setErrors] = useState<Errors>({});
   const recaptchaRef = useRef<ReCAPTCHA>(null);
@@ -116,10 +111,7 @@ export default function Contact({ setSelectedPage }: Props) {
 
   return (
     <section id="contact" ref={sectionRef}>
-      <motion.div
-        className="contact"
-        onViewportEnter={() => setSelectedPage(SelectedPage.Contact)}
-      >
+      <motion.div className="contact">
         <Toaster
           position="top-right"
           toastOptions={{
