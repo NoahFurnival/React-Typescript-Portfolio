@@ -14,7 +14,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 const Background = () => {
-  const isAboveMediumScreens = useMediaQuery("(max-width: 767px)");
+  const isAboveMediumScreens = useMediaQuery("(max-width: 768px)");
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, amount: 0.2 });
   const variants: Variants = {
